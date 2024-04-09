@@ -1,0 +1,33 @@
+[package]
+name = "rust-wgpu-gui-example"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+winit = "0.29.15"
+wgpu = "0.19.3"
+env_logger = "0.11.0"
+log = "0.4.20"
+pollster = "0.3.0"
+bytemuck = { version = "1.14.3", features = ["derive"] }
+glyphon = "0.5.0"
+cfg-if = "1"
+
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+console_error_panic_hook = "0.1.6"
+console_log = "1.0"
+wgpu = { version = "0.19.3", features = ["webgl"]}
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4.30"
+web-time = "1.1.0"
+web-sys = { version = "0.3", features = [
+    "Document",
+    "Window",
+    "Element",
+    "HtmlCanvasElement",
+]}
+
