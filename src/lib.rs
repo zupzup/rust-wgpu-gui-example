@@ -1,3 +1,4 @@
+use std::time::Duration;
 use glyphon::{Color, FontSystem, Resolution, SwashCache, TextArea, TextAtlas, TextRenderer};
 use rectangle::*;
 cfg_if::cfg_if! {
@@ -622,7 +623,7 @@ async fn run_app(event_loop: EventLoop<GUIEvent>, window: Window) {
                         }
 
                         fps += 1;
-                        if now.duration_since(then).unwrap().as_millis() > 1000 {
+                        if now.duration_since(then).unwrap() > Duration::from_secs(1) {
                             state.window().set_title(&format!("FPS: {}", fps));
                             fps = 0;
                             then = now;
